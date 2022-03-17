@@ -1,6 +1,6 @@
 package com.bawp.movieapp.screens.home
 
-import android.util.Log
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -34,6 +34,7 @@ fun HomeScreen(navController: NavController) {
 
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun MainContent(
     navController: NavController,
