@@ -19,12 +19,14 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.bawp.jetweatherforecast.model.Unit
+import com.bawp.jetweatherforecast.navigation.WeatherScreens
 import com.bawp.jetweatherforecast.widgets.WeatherAppBar
 
 @Composable
 fun SettingsScreen(navController: NavController,
                   settingsViewModel: SettingsViewModel = hiltViewModel()) {
 
+    val defaultCity = "San Diego"
     var unitToggleState by remember { mutableStateOf(false) }
     val measurementUnits = listOf("Imperial (F)", "Metric (C)")
     val choiceFromDb = settingsViewModel.unitList.collectAsState().value
@@ -78,7 +80,7 @@ fun SettingsScreen(navController: NavController,
                 Button(onClick = {
                                  settingsViewModel.deleteAllUnits()
                     settingsViewModel.insertUnit(Unit(unit = choiceState ))
-
+                    navController.navigate(WeatherScreens.MainScreen.name +"/$defaultCity")
                 },
                       modifier = Modifier
                           .padding(3.dp)
